@@ -45,6 +45,7 @@ class Weather:
         return (distance)
 
     def find_closest_weather_station(self, df_weather_station_list=Constants.df_us_weather_station):
+        print('assas')
         self.v_coord = np.asarray(df_weather_station_list[['latitude', 'longitude']].values)
         # Find the closest and second closest weather station (backup if the closest doesn't work)
         v_distance = [Weather.haversine_distance(self.latitude, self.longitude, coord[0], coord[1])
@@ -59,6 +60,10 @@ class Weather:
         self.second_closest_weather_station_name = df_weather_station_list.loc[second_closest_index, 'station_name']
         self.third_closest_weather_station_ID = df_weather_station_list.loc[third_closest_index, 'station_ID']
         self.third_closest_weather_station_name = df_weather_station_list.loc[third_closest_index, 'station_name']
+
+        print('1st: ' + self.closest_weather_station_name)
+        print('2nd: ' + self.second_closest_weather_station_name)
+        print('3rd: ' + self.third_closest_weather_station_name)
 
     def download_weather_NOAA(self):
         print("Downloading weather data...")
