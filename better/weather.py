@@ -65,6 +65,7 @@ class Weather:
         print('2nd: ' + self.second_closest_weather_station_name)
         print('3rd: ' + self.third_closest_weather_station_name)
 
+
     def download_weather_NOAA(self):
         print("Downloading weather data...")
         try:
@@ -72,7 +73,7 @@ class Weather:
         except:
             try:
                 print("Weather from the closest weather station not available...")
-                print("Trying to download the third second data from the third closest weather station.")
+                print("Trying to download the third second data from the second closest weather station.")
                 self.v_T_F, self.v_T_C = self.process_downloaded_weather(self.second_closest_weather_station_ID)
             except:
                 print("Weather from the second closest weather station not available...")
