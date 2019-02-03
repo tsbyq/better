@@ -215,7 +215,7 @@ class Portfolio:
         return df_bench_stats
 
 
-    def prepare_portfolio_report_data(self, v_single_buildings, report_path, save_portfolio_results):
+    def prepare_portfolio_report_data(self, v_single_buildings, report_path, save_portfolio_results=True):
         # This function prepares the data for portfolio report
         print(v_single_buildings)
         # Count of effective building in the porfolio

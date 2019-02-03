@@ -93,7 +93,7 @@ class Building:
             else:
                 self.recent_annual_electricity_cost = int(self.recent_annual_electricity_kWh * constants.Constants.electricity_unit_price)
             self.recent_annual_electricity_EUI = round(self.recent_annual_electricity_kWh /self.bldg_area, 1)
-            self.eui_daily_electricity = self.utility_electricity.daily_kWh / self.bldg_area
+            self.eui_daily_electricity = list(self.utility_electricity.daily_kWh / self.bldg_area)
             self.eui_daily_all_periods_electricity = self.utility_electricity.daily_kWh_all_periods / self.bldg_area
             self.annual_eui_electricity = round(
                 self.eui_daily_all_periods_electricity * constants.Constants.days_in_year, 2)
@@ -105,7 +105,7 @@ class Building:
             else:
                 self.recent_annual_fossil_fuel_cost = int(self.recent_annual_fossil_fuel_kWh * constants.Constants.fossil_fuel_unit_price)
             self.recent_annual_fossil_fuel_EUI = round(self.recent_annual_fossil_fuel_kWh /self.bldg_area, 1)
-            self.eui_daily_fossil_fuel = self.utility_fossil_fuel.daily_kWh / self.bldg_area
+            self.eui_daily_fossil_fuel = list(self.utility_fossil_fuel.daily_kWh / self.bldg_area)
             self.eui_daily_all_periods_fossil_fuel = self.utility_fossil_fuel.daily_kWh_all_periods / self.bldg_area
             self.annual_eui_fossil_fuel = round(
                 self.eui_daily_all_periods_fossil_fuel * constants.Constants.days_in_year, 2)

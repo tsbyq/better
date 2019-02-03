@@ -45,6 +45,7 @@ class Weather:
         return (distance)
 
     def find_closest_weather_station(self, df_weather_station_list=Constants.df_us_weather_station):
+    # def find_closest_weather_station(self, df_weather_station_list=Constants.df_cn_weather_station):
         print('assas')
         self.v_coord = np.asarray(df_weather_station_list[['latitude', 'longitude']].values)
         # Find the closest and second closest weather station (backup if the closest doesn't work)

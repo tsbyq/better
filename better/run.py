@@ -5,18 +5,70 @@ NOTICE.  This Software was developed under funding from the U.S. Department of E
 '''
 import json
 from demo import *
-# Notes:
-    # Saving target: 1 ~ conservative, 2 ~ nominal, 3 ~ aggressive
-    # Change the building id and saving target for the building you want to analyze
-# building = run_single(bldg_id=1, saving_target=2, cached_weather=True)[1]
 
-# s = json.dumps(building)
-# print(vars(building))
-# print(building.df_savings_e)
+import pandas as pd
+
+
+
+# building = run_single(bldg_id=33, saving_target=2, cached_weather=False)[1]
+# run_batch(start_id = 1, end_id = 33, saving_target=2, cached_weather=True, batch_report=True, use_default_benchmark_data=True)
+run_batch(start_id = 1, end_id = 32, saving_target=2, cached_weather=True, batch_report=True, use_default_benchmark_data=True)
+
+
+# print(building.bldg_id)
+# print(building.bldg_name)
+# print(building.bldg_address)
+# print(building.bldg_type)
+# print(building.bldg_area)
+# print(building.coord)
+# print(building.saving_target)
+# print(building.eui_daily_electricity)
+# print(building.eui_daily_fossil_fuel)
+# print(building.weather_electricity.v_T_C)
+# print(building.weather_fossil_fuel.v_T_C)
+
+
+# df_electricity = pd.DataFrame({
+#     'eui_daily_electricity': building.eui_daily_electricity,
+#     'T_electricity': building.weather_electricity.v_T_C
+#     })
+
+
+# df_fossil_fuel = pd.DataFrame({
+#     'eui_daily_fossil_fuel': building.eui_daily_fossil_fuel,
+#     'T_fossil_fuel': building.weather_fossil_fuel.v_T_C
+#     })
+
+
+# json_buidling = {
+#     "id":building.bldg_id,
+#     "name":building.bldg_name,
+#     "address":building.bldg_address,
+#     "type":building.bldg_type,
+#     "area":building.bldg_area,
+#     "coord":building.coord,
+#     "saving_target":building.saving_target,
+#     "df_e":df_electricity.to_json(orient='columns'),
+#     "df_f":df_fossil_fuel.to_json(orient='columns')
+# }
+
+
+# s = json.dumps(json_buidling, indent=4, sort_keys=False)
+
+# print(s)
+
+# # parsed = json.loads(s)
+
+# # print(json.dumps(parsed, indent=4, sort_keys=False))
+
+# # print(s)
 
 # f = open("building.txt","w") #opens file with name of "test.txt"
 # f.write(s)
 # f.close()
 
 
-run_batch(start_id = 1, end_id = 32, saving_target=2, cached_weather=True, batch_report=True, use_default_benchmark_data=True)
+
+
+
+

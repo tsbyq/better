@@ -687,7 +687,7 @@ class Report:
     @staticmethod
     def add_2d_scatter_plot(df_summary):
         div_id = str(datetime.datetime.now())
-        locations = df_summary['Building Address'].unique()
+        v_building_ids = df_summary['Building ID']
         scatter_html = ''
         scatter_html += '''
             <div id="'''+div_id+'''" style="height: 100%; width: 100%;" class="plotly-graph-div"></div>
@@ -702,8 +702,11 @@ class Report:
         delta = max(v_cost_savings) - min(v_cost_savings)
         df_summary['Bubble Size'] = [round(((x - min(v_cost_savings)) + 0.5*delta)/delta*15, 1) * 1.5  for x in v_cost_savings]
 
-        for i, location in enumerate(locations):
-            df_temp = df_summary.loc[df_summary['Building Address']==location]
+        for i, building_id in enumerate(v_building_ids):
+            df_temp = df_summary.loc[df_summary['Building ID']==building_id]
+            location = df_temp.iloc[0]['Building Address']
+            # print(df_temp['Building Address'])
+
             v_x = df_temp['Building Annual Electricity EUI (kWh/m2)']
             v_y = df_temp['Building Annual Fossil Fuel EUI (kWh/m2)']
             v_s = df_temp['Bubble Size']
@@ -713,7 +716,8 @@ class Report:
             v_info += 'Annual electricity EUI : ' + str(df_temp['Building Annual Electricity EUI (kWh/m2)'][i]) + ' (kWh/m<sup>2</sup>) <br>'
             v_info += 'Annual fossil fuel EUI : ' + str(df_temp['Building Annual Fossil Fuel EUI (kWh/m2)'][i]) + ' (kWh/m<sup>2</sup>) <br>'
             v_info += 'Potential cost savings: $' + '{:,}'.format(df_temp['Building Annual Energy Cost Savings'][i]) + ' <br>'
-            v_info += 'Potential energy savings: ' + str(df_temp['Building Annual Energy Saving (%)'][i]) + '%'
+            v_info += 'Potential energy savings: ' + str(df_temp['Building Annual Energy Saving (%)'][i]) + '%' + ' <br>'
+            v_info += 'Bubble Size: ' + str(df_temp['Bubble Size'][i])
 
             # c_str = v_rgb_str[i]
             c_str = 'rgb(0, 51, 102)'
