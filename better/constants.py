@@ -810,6 +810,7 @@ class Constants:
     df_us_weather_station = pd.DataFrame(d_us_weather_station)
     df_cn_weather_station = pd.DataFrame(d_cn_weather_station)
 
+
     # # Sample benchmarking statistics (for demonstration purposes only)
     ## Electricity
     # From simulation
